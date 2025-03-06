@@ -46,10 +46,8 @@ public class DoctorServiceImpl implements DoctorService {
         existingDoctor.setEmail(doctor.getEmail());
         existingDoctor.setPhoneNumber(doctor.getPhoneNumber());
         existingDoctor.setClinicAddress(doctor.getClinicAddress());
-        existingDoctor.setPreferredContactMethod(doctor.getPreferredContactMethod());
         existingDoctor.setPassword(doctor.getPassword());
         existingDoctor.setAvailableDays(doctor.getAvailableDays());
-        existingDoctor.setAvailableTimeSlots(doctor.getAvailableTimeSlots());
         doctorRepository.save(existingDoctor);
         return existingDoctor;
     }
