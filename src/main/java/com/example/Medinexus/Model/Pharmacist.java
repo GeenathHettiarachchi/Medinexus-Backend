@@ -2,7 +2,6 @@ package com.example.Medinexus.Model;
 
 import lombok.Data;
 import java.time.LocalDate;
-import java.util.List;
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
 
@@ -18,19 +17,12 @@ public class Pharmacist {
     private String email;
     private String phoneNumber;
     private String address;
-    private List<String> areasOfExpertise;
+    private String specialization;
     private String pharmacyLicenseNumber;
     private Integer yearsOfExperience;
-    private List<String> languageProficiency;
-    private List<String> qualifications;
     private String pharmacyName;
-    private String pharmacyAddress;
-    private String preferredWorkLocation;
     private String username;
     private String password;
-    private String emergencyContact;
-    private String certificateOrLicenseFilePath;
-    private String profilePictureFilePath;
-    private List<String> availableDays;
-    private List<String> shiftPreference;
+    private String licenseFilePath;
+    private String drugList;
 }
