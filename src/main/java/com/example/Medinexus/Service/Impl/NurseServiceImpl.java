@@ -46,13 +46,8 @@ public class NurseServiceImpl implements NurseService {
         existingNurse.setSpecialization(nurse.getSpecialization()); 
         existingNurse.setMedicalLicenseNumber(nurse.getMedicalLicenseNumber());
         existingNurse.setYearsOfExperience(nurse.getYearsOfExperience());
-        existingNurse.setClinicOrHospitalAddress(nurse.getClinicOrHospitalAddress());
-        existingNurse.setPreferredContactMethod(nurse.getPreferredContactMethod());
-        existingNurse.setLanguageProficiency(nurse.getLanguageProficiency());
-        existingNurse.setQualifications(nurse.getQualifications());
         existingNurse.setPassword(nurse.getPassword());
         existingNurse.setAvailableDays(nurse.getAvailableDays());
-        existingNurse.setShiftPreference(nurse.getShiftPreference());
         nurseRepository.save(existingNurse); 
         return existingNurse; 
     } 
