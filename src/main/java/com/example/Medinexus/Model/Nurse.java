@@ -17,20 +17,14 @@ public class Nurse {
     private String fullName;
     private String gender;
     private LocalDate dateOfBirth;
-    private String email;
-    private String phoneNumber;
-    private String address;
     private String specialization;
     private String medicalLicenseNumber;
     private Integer yearsOfExperience;
-    private String clinicOrHospitalAddress;
-    private String preferredContactMethod;
-    private List<String> languageProficiency;
-    private List<String> qualifications;
+    private String email;
+    private String phoneNumber;
+    private String address;
     private String username;
     private String password;
     private String medicalCertificationFilePath;
-    private String profilePictureFilePath;
     private List<String> availableDays;
-    private List<String> shiftPreference;
 }
