@@ -32,6 +32,9 @@ public class User {
 
     @NotBlank
     @Size(max = 120)
+    @Pattern(
+        regexp = "^(?=.*[A-Z])(?=.*[a-z])(?=.*\\d)(?=.*[@$!%*?&])[A-Za-z\\d@$!%*?&]{8,40}$"
+    )
     private String password;
 
     @DBRef
