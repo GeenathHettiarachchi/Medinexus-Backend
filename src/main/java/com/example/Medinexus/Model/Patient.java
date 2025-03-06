@@ -16,20 +16,13 @@ public class Patient {
     private String dateOfBirth;
     private String email;
     private String phoneNumber;
-    private String address;
-    private String nationalIdOrPassportNumber;
+    private String homeAddress;
     private String bloodGroup;
     private List<String> allergies;
     private List<String> existingMedicalConditions;
-    private double height;
-    private double weight;
-    private String anySpecialNotice;
     private String emergencyContactName;
     private String emergencyContactRelationship;
     private String emergencyContactNumber;
     private String username;
     private String password;
-    private List<String> medicalReportsFilePath;
-    private String profilePictureFilePath;
-    private String anySpecialRequirements;
 }
