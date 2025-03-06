@@ -21,11 +21,9 @@ public class Doctor {
     private String email;
     private String phoneNumber;
     private String clinicAddress;
-    private String preferredContactMethod;
     private String username;
     private String password;
     private String medicalCertificationFilePath;
     private String profilePictureFilePath;
     private List<String> availableDays;
-    private List<String> availableTimeSlots;
 }
