@@ -14,7 +14,9 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestPart;
 import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.multipart.MultipartFile;
 
 import java.util.List;
 
@@ -28,8 +30,10 @@ public class NurseController {
 
     @PostMapping
     @PreAuthorize("hasRole('NURSE')")
-    public ResponseEntity<Nurse> saveNurse(@RequestBody Nurse nurse){ 
-        return new ResponseEntity<>(nurseService.saveNurse(nurse), HttpStatus.CREATED);
+    public ResponseEntity<Nurse> saveNurse(@RequestPart("nurse") Nurse nurse,
+                                           @RequestPart("medicalCertificationFile") MultipartFile medicalCertificationFile) {
+        Nurse savedNurse = nurseService.saveNurse(nurse, medicalCertificationFile);
+        return new ResponseEntity<>(savedNurse, HttpStatus.CREATED);
     }
 
     @GetMapping
