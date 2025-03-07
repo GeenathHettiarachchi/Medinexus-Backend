@@ -49,6 +49,7 @@ public class NurseController {
     }
 
     @PutMapping("/{id}")
+    @PreAuthorize("hasRole('ADMIN')")
     public ResponseEntity<Nurse> updateNurse(@PathVariable String id, @RequestBody Nurse nurse) {
         return new ResponseEntity<>(nurseService.updateNurse(nurse, id), HttpStatus.OK);
     }
