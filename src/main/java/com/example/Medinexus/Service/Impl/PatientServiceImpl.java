@@ -42,7 +42,7 @@ public class PatientServiceImpl implements PatientService {
         existingPatient.setDateOfBirth(patient.getDateOfBirth());
         existingPatient.setEmail(patient.getEmail()); 
         existingPatient.setPhoneNumber(patient.getPhoneNumber());
-        existingPatient.setHomeAddress(patient.getHomeAddress());
+        existingPatient.setAddress(patient.getAddress());
         existingPatient.setBloodGroup(patient.getBloodGroup());
         existingPatient.setAllergies(patient.getAllergies());
         existingPatient.setExistingMedicalConditions(patient.getExistingMedicalConditions());
