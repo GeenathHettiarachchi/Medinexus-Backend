@@ -18,6 +18,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.example.Medinexus.Model.Doctor;
 import com.example.Medinexus.Model.ERole;
 import com.example.Medinexus.Model.Nurse;
 import com.example.Medinexus.Model.Patient;
@@ -28,6 +29,7 @@ import com.example.Medinexus.Payload.Request.LoginRequest;
 import com.example.Medinexus.Payload.Request.SignUpRequest;
 import com.example.Medinexus.Payload.Response.JwtResponse;
 import com.example.Medinexus.Payload.Response.MessageResponse;
+import com.example.Medinexus.Repository.DoctorRepository;
 import com.example.Medinexus.Repository.NurseRepository;
 import com.example.Medinexus.Repository.PatientRepository;
 import com.example.Medinexus.Repository.PharmacistRepository;
@@ -52,8 +54,8 @@ public class AuthController {
 	@Autowired
 	RoleRepository roleRepository;
 
-    // @Autowired
-    // DoctorRepository doctorRepository;
+    @Autowired
+    DoctorRepository doctorRepository;
 
     @Autowired
     NurseRepository nurseRepository;
@@ -152,20 +154,20 @@ public class AuthController {
 
         // Save role-specific details
         if (strRoles.contains("doctor")) {
-            // Doctor doctor = new Doctor();
-            // doctor.setUserId(savedUser.getId()); // Link to the User collection
-            // doctor.setFullName(signUpRequest.getFullName());
-            // doctor.setGender(signUpRequest.getGender());
-            // doctor.setDateOfBirth(signUpRequest.getDateOfBirth());
-            // doctor.setSpecialization(signUpRequest.getSpecialization());
-            // doctor.setMedicalLicenseNumber(signUpRequest.getMedicalLicenseNumber());
-            // doctor.setYearsOfExperience(signUpRequest.getYearsOfExperience());
-            // doctor.setPhoneNumber(signUpRequest.getPhoneNumber());
-            // doctor.setClinicAddress(signUpRequest.getClinicAddress());
-            // doctor.setMedicalCertificationFilePath(signUpRequest.getMedicalCertificationFilePath());
-            // doctor.setProfilePictureFilePath(signUpRequest.getProfilePictureFilePath());
-            // doctor.setAvailableDays(signUpRequest.getAvailableDays());
-            // doctorRepository.save(doctor);
+            Doctor doctor = new Doctor();
+            doctor.setUserId(savedUser.getId()); // Link to the User collection
+            doctor.setFullName(signUpRequest.getFullName());
+            doctor.setGender(signUpRequest.getGender());
+            doctor.setDateOfBirth(signUpRequest.getDateOfBirth());
+            doctor.setSpecialization(signUpRequest.getSpecialization());
+            doctor.setMedicalLicenseNumber(signUpRequest.getMedicalLicenseNumber());
+            doctor.setYearsOfExperience(signUpRequest.getYearsOfExperience());
+            doctor.setPhoneNumber(signUpRequest.getPhoneNumber());
+            doctor.setClinicAddress(signUpRequest.getClinicAddress());
+            doctor.setMedicalCertificationFilePath(signUpRequest.getMedicalCertificationFilePath());
+            doctor.setProfilePictureFilePath(signUpRequest.getProfilePictureFilePath());
+            doctor.setAvailableDays(signUpRequest.getAvailableDays());
+            doctorRepository.save(doctor);
         } else if (strRoles.contains("nurse")) {
             Nurse nurse = new Nurse();
             nurse.setUserId(savedUser.getId()); // Link to the User collection
