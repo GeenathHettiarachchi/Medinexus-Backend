@@ -12,7 +12,8 @@ import org.springframework.data.mongodb.core.mapping.Document;
 @Data
 public class Nurse {
     @Id
-    private String Id;
+    private String id;
+    private String userId; // Reference to the User collection
 
     private String fullName;
     private String gender;

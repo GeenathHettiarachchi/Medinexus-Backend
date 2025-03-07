@@ -10,19 +10,20 @@ import org.springframework.data.mongodb.core.mapping.Document;
 public class Pharmacist {
     @Id
     private String id;
+    private String userId; // Reference to the User collection
 
     private String fullName;
     private String gender;
     private LocalDate dateOfBirth;
+    private String medicalLicenseNumber;
+    private Integer yearsOfExperience;
+    private String pharmacyName;
+    private String specialization;
     private String email;
     private String phoneNumber;
     private String address;
-    private String specialization;
-    private String pharmacyLicenseNumber;
-    private Integer yearsOfExperience;
-    private String pharmacyName;
     private String username;
     private String password;
-    private String licenseFilePath;
+    private String medicalCertificationFilePath;
     private String drugList;
 }
