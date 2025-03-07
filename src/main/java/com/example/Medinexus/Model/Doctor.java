@@ -11,6 +11,7 @@ import org.springframework.data.mongodb.core.mapping.Document;
 public class Doctor {
     @Id
     private String id;
+    private String userId;
 
     private String fullName;
     private String gender;
