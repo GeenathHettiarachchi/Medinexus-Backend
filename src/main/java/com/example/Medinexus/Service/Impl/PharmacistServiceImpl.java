@@ -43,7 +43,7 @@ public class PharmacistServiceImpl implements PharmacistService {
         existingPharmacist.setEmail(pharmacist.getEmail()); 
         existingPharmacist.setPhoneNumber(pharmacist.getPhoneNumber());
         existingPharmacist.setAddress(pharmacist.getAddress());
-        existingPharmacist.setPharmacyLicenseNumber(pharmacist.getPharmacyLicenseNumber());
+        existingPharmacist.setMedicalLicenseNumber(pharmacist.getMedicalLicenseNumber());
         existingPharmacist.setYearsOfExperience(pharmacist.getYearsOfExperience());
         existingPharmacist.setPharmacyName(pharmacist.getPharmacyName());
         existingPharmacist.setPassword(pharmacist.getPassword());
