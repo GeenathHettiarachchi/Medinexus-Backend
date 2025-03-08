@@ -1,5 +1,7 @@
 package com.example.Medinexus.Security;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -18,6 +20,9 @@ import org.springframework.security.crypto.password.PasswordEncoder;
 //import org.springframework.security.provisioning.InMemoryUserDetailsManager;
 import org.springframework.security.web.SecurityFilterChain;
 import org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter;
+import org.springframework.web.cors.CorsConfiguration;
+import org.springframework.web.cors.CorsConfigurationSource;
+import org.springframework.web.cors.UrlBasedCorsConfigurationSource;
 
 import com.example.Medinexus.Security.JWT.AuthEntryPointJwt;
 import com.example.Medinexus.Security.JWT.AuthTokenFilter;
@@ -66,8 +71,12 @@ public class WebSecurityConfig {
     http.csrf(csrf -> csrf.disable())
         .exceptionHandling(exception -> exception.authenticationEntryPoint(unauthorizedHandler))
         .sessionManagement(session -> session.sessionCreationPolicy(SessionCreationPolicy.STATELESS))
-        .authorizeHttpRequests(auth -> auth.requestMatchers(HttpMethod.OPTIONS, "/**").permitAll().requestMatchers("/api/auth/**").permitAll().requestMatchers("/api/test/**")
-            .permitAll() .requestMatchers(
+        .authorizeHttpRequests(auth -> auth
+          .requestMatchers(HttpMethod.OPTIONS, "/**").permitAll()
+          .requestMatchers("/api/auth/**").permitAll()
+          .requestMatchers("/api/doctors").permitAll()
+          .requestMatchers("/api/test/**").permitAll()
+          .requestMatchers(
               "/v2/api-docs",       // Swagger v2 API docs
               "/v3/api-docs/**",    // Swagger v3 API docs
               "/swagger-ui/**",     // Swagger UI
@@ -80,6 +89,19 @@ public class WebSecurityConfig {
     http.addFilterBefore(authenticationJwtTokenFilter(), UsernamePasswordAuthenticationFilter.class);
 
     return http.build();
+  }
+
+  @Bean
+  public CorsConfigurationSource corsConfigurationSource() {
+      CorsConfiguration configuration = new CorsConfiguration();
+      configuration.setAllowedOrigins(List.of("*"));
+      configuration.setAllowedMethods(List.of("GET", "POST", "PUT", "DELETE", "OPTIONS"));
+      configuration.setAllowedHeaders(List.of("*"));
+      configuration.setAllowCredentials(true);
+
+      UrlBasedCorsConfigurationSource source = new UrlBasedCorsConfigurationSource();
+      source.registerCorsConfiguration("/**", configuration);
+      return source;
   }
 
     //In Memory Authentication
