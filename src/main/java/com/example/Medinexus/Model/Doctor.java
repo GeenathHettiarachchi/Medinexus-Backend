@@ -3,14 +3,11 @@ package com.example.Medinexus.Model;
 import lombok.Data;
 import java.time.LocalDate;
 import java.util.List;
-import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
 
 @Document(collection = "doctors")
 @Data
 public class Doctor {
-    @Id
-    private String id;
     private String userId;
 
     private String fullName;
