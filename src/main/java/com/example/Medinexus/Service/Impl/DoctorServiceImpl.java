@@ -1,5 +1,6 @@
 package com.example.Medinexus.Service.Impl;
 
+// import java.util.Arrays;
 import java.util.List;
 import java.util.Optional;
 
@@ -13,6 +14,10 @@ import org.springframework.stereotype.Service;
 public class DoctorServiceImpl implements DoctorService {
     @Autowired
     private DoctorRepository doctorRepository;
+
+    // private static final List<String> ALLOWED_FILE_TYPES = Arrays.asList("pdf", "jpg", "jpeg", "png");
+    // private static final String MEDICAL_CERTIFICATION_UPLOAD_DIR = "uploads/medical_certifications/";
+    // private static final String PROFILE_PICTURE_UPLOAD_DIR = "uploads/profile_pictures/";
 
     @Override
     public Doctor saveDoctor(Doctor doctor) {
