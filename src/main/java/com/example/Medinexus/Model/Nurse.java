@@ -5,15 +5,12 @@ import lombok.Data;
 import java.time.LocalDate;
 import java.util.List;
 
-import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
 
 @Document(collection = "nurses")
 @Data
 public class Nurse {
-    @Id
-    private String id;
-    private String userId; // Reference to the User collection
+    private String userId;
 
     private String fullName;
     private String gender;
