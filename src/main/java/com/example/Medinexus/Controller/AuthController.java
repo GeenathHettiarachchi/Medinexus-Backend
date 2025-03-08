@@ -5,6 +5,8 @@ import java.util.List;
 import java.util.Set;
 import java.util.stream.Collectors;
 
+import jakarta.validation.Valid;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.authentication.AuthenticationManager;
@@ -38,14 +40,11 @@ import com.example.Medinexus.Repository.UserRepository;
 import com.example.Medinexus.Security.JWT.JwtUtils;
 import com.example.Medinexus.Security.Services.UserDetailsImpl;
 
-import jakarta.validation.Valid;
-
 @CrossOrigin(origins = "*", maxAge = 3600)
 @RestController
 @RequestMapping("/api/auth")
 public class AuthController {
-
-    @Autowired
+	@Autowired
 	AuthenticationManager authenticationManager;
 
 	@Autowired
@@ -68,22 +67,20 @@ public class AuthController {
 
 	@Autowired
 	PasswordEncoder encoder;
-    
-    @Autowired
+
+	@Autowired
 	JwtUtils jwtUtils;
 
-    @PostMapping("/signin")
+	@PostMapping("/signin")
 	public ResponseEntity<?> authenticateUser(@Valid @RequestBody LoginRequest loginRequest) {
 
 		Authentication authentication = authenticationManager.authenticate(
 				new UsernamePasswordAuthenticationToken(loginRequest.getUsername(), loginRequest.getPassword()));
 
 		SecurityContextHolder.getContext().setAuthentication(authentication);
-
 		String jwt = jwtUtils.generateJwtToken(authentication);
 		
-		UserDetailsImpl userDetails = (UserDetailsImpl) authentication.getPrincipal();	
-
+		UserDetailsImpl userDetails = (UserDetailsImpl) authentication.getPrincipal();		
 		List<String> roles = userDetails.getAuthorities().stream()
 				.map(item -> item.getAuthority())
 				.collect(Collectors.toList());
@@ -95,8 +92,9 @@ public class AuthController {
 												 roles));
 	}
 
-	@PostMapping("/signup")
+    @PostMapping("/signup")
     public ResponseEntity<?> registerUser(@Valid @RequestBody SignUpRequest signUpRequest) {
+        // Check if username or email is already taken
         if (userRepository.existsByUsername(signUpRequest.getUsername())) {
             return ResponseEntity.badRequest()
                     .body(new MessageResponse("Error: Username is already taken!"));
@@ -107,13 +105,14 @@ public class AuthController {
                     .body(new MessageResponse("Error: Email is already in use!"));
         }
 
-        // Encode the password and create a new user
+        // Create a new user
         User user = new User(
                 signUpRequest.getUsername(),
                 signUpRequest.getEmail(),
                 encoder.encode(signUpRequest.getPassword())
         );
 
+        // Assign roles
         Set<String> strRoles = signUpRequest.getRoles();
         Set<Role> roles = new HashSet<>();
 
@@ -187,7 +186,7 @@ public class AuthController {
             patient.setUserId(savedUser.getId()); // Link to the User collection
             patient.setFullName(signUpRequest.getFullName());
             patient.setGender(signUpRequest.getGender());
-            // patient.setDateOfBirth(signUpRequest.getDateOfBirth());
+            patient.setDateOfBirth(signUpRequest.getDateOfBirth());
             patient.setBloodGroup(signUpRequest.getBloodGroup());
             patient.setAllergies(signUpRequest.getAllergies());
             patient.setExistingMedicalConditions(signUpRequest.getExistingMedicalConditions());
