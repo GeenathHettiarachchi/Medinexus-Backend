@@ -17,7 +17,6 @@ import org.springframework.web.bind.annotation.RestController;
 import java.util.List;
 
 import com.example.Medinexus.Model.Doctor;
-import com.example.Medinexus.Repository.UserRepository;
 import com.example.Medinexus.Service.DoctorService;
 
 @RestController
@@ -27,20 +26,10 @@ public class DoctorController {
     @Autowired
     private DoctorService doctorService;
 
-    @Autowired
-    private UserRepository userRepository;
-
     @PostMapping
     @PreAuthorize("hasRole('DOCTOR')")
     public ResponseEntity<Doctor> saveDoctor(@RequestBody Doctor doctor) {
-        // Ensure the doctor is already registered in the users collection
-        if (!userRepository.existsById(doctor.getUserId())) {
-            throw new RuntimeException("Error: User not found!");
-        }
-
-        // Save doctor-specific details
-        Doctor savedDoctor = doctorService.saveDoctor(doctor);
-        return new ResponseEntity<>(savedDoctor, HttpStatus.CREATED);
+        return new ResponseEntity<>(doctorService.saveDoctor(doctor), HttpStatus.CREATED);
     }
 
     @GetMapping
