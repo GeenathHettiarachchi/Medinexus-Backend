@@ -168,6 +168,9 @@ public class AuthController {
             doctor.setYearsOfExperience(signUpRequest.getYearsOfExperience());
             doctor.setPhoneNumber(signUpRequest.getPhoneNumber());
             doctor.setClinicAddress(signUpRequest.getClinicAddress());
+            doctor.setUsername(signUpRequest.getUsername());
+            doctor.setPassword(encoder.encode(signUpRequest.getPassword()));
+            doctor.setEmail(signUpRequest.getEmail());
             doctor.setMedicalCertificationFilePath(signUpRequest.getMedicalCertificationFilePath());
             doctor.setProfilePictureFilePath(signUpRequest.getProfilePictureFilePath());
             doctor.setAvailableDays(signUpRequest.getAvailableDays());
@@ -183,6 +186,9 @@ public class AuthController {
             nurse.setYearsOfExperience(signUpRequest.getYearsOfExperience());
             nurse.setPhoneNumber(signUpRequest.getPhoneNumber());
             nurse.setAddress(signUpRequest.getAddress());
+            nurse.setUsername(signUpRequest.getUsername());
+            nurse.setPassword(encoder.encode(signUpRequest.getPassword()));
+            nurse.setEmail(signUpRequest.getEmail());
             nurse.setMedicalCertificationFilePath(signUpRequest.getMedicalCertificationFilePath());
             nurse.setAvailableDays(signUpRequest.getAvailableDays());
             nurseRepository.save(nurse);
@@ -197,6 +203,9 @@ public class AuthController {
             patient.setExistingMedicalConditions(signUpRequest.getExistingMedicalConditions());
             patient.setPhoneNumber(signUpRequest.getPhoneNumber());
             patient.setAddress(signUpRequest.getAddress());
+            patient.setUsername(signUpRequest.getUsername());
+            patient.setPassword(encoder.encode(signUpRequest.getPassword()));
+            patient.setEmail(signUpRequest.getEmail());
             patient.setEmergencyContactName(signUpRequest.getEmergencyContactName());
             patient.setEmergencyContactNumber(signUpRequest.getEmergencyContactNumber());
             patient.setEmergencyContactRelationship(signUpRequest.getEmergencyContactRelationship());
@@ -213,6 +222,9 @@ public class AuthController {
             pharmacist.setSpecialization(signUpRequest.getSpecialization());
             pharmacist.setPhoneNumber(signUpRequest.getPhoneNumber());
             pharmacist.setAddress(signUpRequest.getAddress());
+            pharmacist.setUsername(signUpRequest.getUsername());
+            pharmacist.setPassword(encoder.encode(signUpRequest.getPassword()));
+            pharmacist.setEmail(signUpRequest.getEmail());
             pharmacist.setMedicalCertificationFilePath(signUpRequest.getMedicalCertificationFilePath());
             pharmacist.setDrugList(signUpRequest.getDrugList());
             pharmacistRepository.save(pharmacist);
@@ -222,6 +234,9 @@ public class AuthController {
             admin.setAdminName(signUpRequest.getAdminName());
             admin.setAdminAddress(signUpRequest.getAdminAddress());
             admin.setAdminPhone(signUpRequest.getAdminPhone());
+            admin.setUsername(signUpRequest.getUsername());
+            admin.setPassword(encoder.encode(signUpRequest.getPassword()));
+            admin.setEmail(signUpRequest.getEmail());
             adminRepository.save(admin);
         }
 
