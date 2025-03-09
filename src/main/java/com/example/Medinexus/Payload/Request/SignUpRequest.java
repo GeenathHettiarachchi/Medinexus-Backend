@@ -57,4 +57,9 @@ public class SignUpRequest {
     // Doctor-specific fields
     private String clinicAddress;
     private String profilePictureFilePath;
+
+    // Admin-specific fields
+    private String adminName;
+    private String adminAddress;
+    private String adminPhone;
 }
