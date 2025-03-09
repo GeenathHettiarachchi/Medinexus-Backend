@@ -16,8 +16,8 @@ public class AdminServiceImpl implements AdminService {
     private AdminRepository adminRepository;
 
     @Override
-    public Admin saveAdmin(Admin doctor) {
-        return adminRepository.save(doctor);
+    public Admin saveAdmin(Admin admin) {
+        return adminRepository.save(admin);
     }
 
     @Override
@@ -27,11 +27,11 @@ public class AdminServiceImpl implements AdminService {
 
     @Override
     public Admin getAdminById(String id) {
-        Optional<Admin> doctor =  adminRepository.findById(id);
-        if(doctor.isPresent()){
-            return doctor.get();
+        Optional<Admin> admin =  adminRepository.findById(id);
+        if(admin.isPresent()){
+            return admin.get();
         }else {
-            throw new RuntimeException("Doctor not found");
+            throw new RuntimeException("Admin not found");
         }
     }
 
@@ -41,8 +41,8 @@ public class AdminServiceImpl implements AdminService {
         existingAdmin.setAdminName(admin.getAdminName());
         existingAdmin.setAdminAddress(admin.getAdminAddress());
         existingAdmin.setAdminPhone(admin.getAdminPhone());
-        existingAdmin.setAdminEmail(admin.getAdminEmail());
-        existingAdmin.setAdminPassword(admin.getAdminPassword());
+        existingAdmin.setEmail(admin.getEmail());
+        existingAdmin.setPassword(admin.getPassword());
         adminRepository.save(existingAdmin);
         return existingAdmin;
     }
