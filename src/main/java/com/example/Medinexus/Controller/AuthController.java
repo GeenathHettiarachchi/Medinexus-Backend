@@ -20,6 +20,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.example.Medinexus.Model.Admin;
 import com.example.Medinexus.Model.Doctor;
 import com.example.Medinexus.Model.ERole;
 import com.example.Medinexus.Model.Nurse;
@@ -31,6 +32,7 @@ import com.example.Medinexus.Payload.Request.LoginRequest;
 import com.example.Medinexus.Payload.Request.SignUpRequest;
 import com.example.Medinexus.Payload.Response.JwtResponse;
 import com.example.Medinexus.Payload.Response.MessageResponse;
+import com.example.Medinexus.Repository.AdminRepository;
 import com.example.Medinexus.Repository.DoctorRepository;
 import com.example.Medinexus.Repository.NurseRepository;
 import com.example.Medinexus.Repository.PatientRepository;
@@ -52,6 +54,9 @@ public class AuthController {
 
 	@Autowired
 	RoleRepository roleRepository;
+
+    @Autowired
+    AdminRepository adminRepository;
 
     @Autowired
     DoctorRepository doctorRepository;
@@ -211,6 +216,13 @@ public class AuthController {
             pharmacist.setMedicalCertificationFilePath(signUpRequest.getMedicalCertificationFilePath());
             pharmacist.setDrugList(signUpRequest.getDrugList());
             pharmacistRepository.save(pharmacist);
+        } else if (strRoles.contains("admin")) {
+            Admin admin = new Admin();
+            admin.setUserId(savedUser.getId()); // Link to the User collection
+            admin.setAdminName(signUpRequest.getAdminName());
+            admin.setAdminAddress(signUpRequest.getAdminAddress());
+            admin.setAdminPhone(signUpRequest.getAdminPhone());
+            adminRepository.save(admin);
         }
 
         return ResponseEntity.ok(new MessageResponse("User registered successfully!"));
