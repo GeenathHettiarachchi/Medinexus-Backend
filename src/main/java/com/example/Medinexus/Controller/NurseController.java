@@ -27,7 +27,7 @@ public class NurseController {
     private NurseService nurseService;
 
     @PostMapping
-    @PreAuthorize("hasRole('NURSE')")
+    @PreAuthorize("hasRole('PATIENT')")
     public ResponseEntity<Nurse> saveNurse(@RequestBody Nurse nurse){
         return new ResponseEntity<>(nurseService.saveNurse(nurse), HttpStatus.CREATED);
     }
