@@ -16,4 +16,7 @@ public class Appointment {
     private String nurseId;
     private LocalDate date;
     private LocalTime time;
+    private String patientName;
+    private String patientContact;
+    private String patientEmail;
 }
