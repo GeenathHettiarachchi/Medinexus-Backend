@@ -16,7 +16,6 @@ public class Appointment {
     private String id;
     
     private String doctorId;
-    private String patientId;
     private String nurseId;
     private LocalDate date;
     private LocalTime time;
