@@ -58,7 +58,7 @@ public class PatientServiceImpl implements PatientService {
         existingPatient.setEmergencyContactName(patient.getEmergencyContactName());
         existingPatient.setEmergencyContactNumber(patient.getEmergencyContactNumber());
         existingPatient.setEmergencyContactRelationship(patient.getEmergencyContactRelationship());
-        existingPatient.setPassword(patient.getPassword());
+        existingPatient.setPassword(passwordEncoder.encode(patient.getPassword()));
         patientRepository.save(existingPatient); 
 
         User user = userRepository.findById(existingPatient.getUserId())
