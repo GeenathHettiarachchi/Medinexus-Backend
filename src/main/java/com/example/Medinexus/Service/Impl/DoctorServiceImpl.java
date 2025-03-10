@@ -62,7 +62,7 @@ public class DoctorServiceImpl implements DoctorService {
         existingDoctor.setPhoneNumber(doctor.getPhoneNumber());
         existingDoctor.setClinicAddress(doctor.getClinicAddress());
         existingDoctor.setUsername(doctor.getUsername());
-        existingDoctor.setPassword(doctor.getPassword());
+        existingDoctor.setPassword(passwordEncoder.encode(doctor.getPassword()));
         existingDoctor.setAvailableDays(doctor.getAvailableDays());
         doctorRepository.save(existingDoctor);
 
