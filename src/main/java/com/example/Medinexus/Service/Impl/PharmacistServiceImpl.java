@@ -55,7 +55,7 @@ public class PharmacistServiceImpl implements PharmacistService {
         existingPharmacist.setMedicalLicenseNumber(pharmacist.getMedicalLicenseNumber());
         existingPharmacist.setYearsOfExperience(pharmacist.getYearsOfExperience());
         existingPharmacist.setPharmacyName(pharmacist.getPharmacyName());
-        existingPharmacist.setPassword(pharmacist.getPassword());
+        existingPharmacist.setPassword(passwordEncoder.encode(pharmacist.getPassword()));
         pharmacistRepository.save(existingPharmacist); 
 
         User user = userRepository.findById(existingPharmacist.getUserId())
