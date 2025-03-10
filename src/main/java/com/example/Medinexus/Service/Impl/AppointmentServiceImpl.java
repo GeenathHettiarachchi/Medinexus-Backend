@@ -40,7 +40,6 @@ public class AppointmentServiceImpl implements AppointmentService {
         Appointment existingAppointment = appointmentRepository.findById(id).orElseThrow(()-> new RuntimeException()); 
         existingAppointment.setDoctorId(appointment.getDoctorId()); 
         existingAppointment.setNurseId(appointment.getNurseId());
-        existingAppointment.setPatientId(appointment.getPatientId());
         existingAppointment.setDate(appointment.getDate());
         existingAppointment.setTime(appointment.getTime());
         existingAppointment.setPatientName(appointment.getPatientName());
