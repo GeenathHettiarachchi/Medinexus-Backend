@@ -51,7 +51,7 @@ public class AdminServiceImpl implements AdminService {
         existingAdmin.setAdminAddress(admin.getAdminAddress());
         existingAdmin.setAdminPhone(admin.getAdminPhone());
         existingAdmin.setEmail(admin.getEmail());
-        existingAdmin.setPassword(admin.getPassword());
+        existingAdmin.setPassword(passwordEncoder.encode(admin.getPassword()));
         adminRepository.save(existingAdmin);
 
         User user = userRepository.findById(existingAdmin.getUserId())
